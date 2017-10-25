@@ -1,0 +1,134 @@
+div#calendar{
+  margin:0px auto;
+  padding:0px;
+  width: 100%;
+  font-family:Helvetica, "Times New Roman", Times, serif;
+}
+
+div#calendar .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+div#calendar div.box{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:40px;
+    background-color: #FB404B !important;      
+}
+ 
+div#calendar div.header{
+    line-height:40px;  
+    vertical-align:middle;
+    width:100%; 
+    text-align:center;
+}
+ 
+div#calendar div.header .prev,div#calendar div.header .next{   
+    border-bottom: 2px solid #FFF;
+    display:block;
+    cursor:pointer;
+    color:#FFF;
+    transition: ease all 500ms;
+}
+
+div#calendar div.header .prev a,div#calendar div.header .next a{   
+    text-decoration: none;
+    color:#FFF;
+}
+
+div#calendar div.header div.prev:hover,div#calendar div.header div.next:hover{   
+border-bottom: 2px solid #FB404B;
+transition: ease all 800ms;
+}
+ 
+div#calendar div.header .title{
+    color:#FFF;
+    font-size:18px;
+}
+ 
+ 
+ 
+ 
+/*******************************Calendar Content Cells*********************************/
+
+ 
+div#calendar .label{
+    margin: 0 auto;
+    padding: 0px;
+    margin-left: 5px;
+    width:100%;
+}
+ 
+div#calendar .label .row{
+    margin:0 auto;
+    padding:10px 0px;
+    vertical-align:middle;
+    font-size:15px;
+    background-color: #FB404B;
+    color:#FFF;
+    text-align:center; 
+}
+
+div#calendar .label .row div {
+    display: inline-block;
+    float: none;
+    margin:0 auto;
+    margin-right:5px;
+    vertical-align:middle;
+}
+ 
+ 
+div#calendar .dates{
+    margin: 0 auto;
+    padding: 0px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width:100%;
+    text-align: center;
+}
+
+div#calendar .dates .row{
+    text-align: center;
+}
+ 
+/** overall width = width+padding-right**/
+div#calendar .dates .row a {
+    margin:0 auto;
+    float: none;
+    display: inline-block;
+    padding:0px;
+    margin-top: 5px;
+    line-height:80px;
+    vertical-align:middle;
+    height:80px;
+    font-size:25px;
+    background-color: #DDD;
+    color:#000;
+    text-align:center; 
+    transition: ease all 500ms;
+    text-decoration: none;
+}
+
+div#calendar .dates .row .pointer {
+    cursor: pointer; 
+    transition: ease all 500ms;
+    
+}
+
+div#calendar .dates .row .pointer:hover {
+    
+    transition: ease all 800ms;
+    background-color: #fa1e2d;
+    color:#FFF;
+}
+ 
+:focus{
+    outline:none;
+}
+ 
+div.clear{
+    clear:both;
+}      
