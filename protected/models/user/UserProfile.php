@@ -19,6 +19,7 @@
  */
 class UserProfile extends CActiveRecord
 {
+        public $image;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,6 +45,7 @@ class UserProfile extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_user_profile, id_user, nombres, apellidos, sobre_mi, direccion, ciudad, pais, foto_perfil', 'safe', 'on'=>'search'),
+                        array('image', 'file', 'types'=>'jpg, gif, png', 'safe' => false),
 		);
 	}
 

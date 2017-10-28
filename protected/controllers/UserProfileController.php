@@ -127,10 +127,92 @@ throw new CHttpException(400,'Invalid request. Please do not repeat this request
 */
 public function actionIndex() {
 
-    $profile = new UserProfile; 
+    $profile = UserProfile::model()->findByAttributes(array("id_user" => Yii::app()->user->id));
     $media = new SocialMedia;
     $user = CrugeStoredUser::model()->findByAttributes(array("iduser" => Yii::app()->user->id));
     
+    if(empty($profile)){
+       $profile = new UserProfile; 
+    }
+     
+    if(isset($_POST['UserProfile'])){
+        
+        $update = UserProfile::model()->findByAttributes(array("id_user" => Yii::app()->user->id));
+        
+    
+        if(empty($update)){
+            
+            $image = CUploadedFile::getInstance($profile,'image');
+            
+                $profile = new UserProfile; 
+                $profile->id_user = Yii::app()->user->id;
+
+                $profile->nombres = $_POST['UserProfile']['nombres'];
+                $profile->apellidos = $_POST['UserProfile']['apellidos'];
+                $profile->sobre_mi = $_POST['UserProfile']['sobre_mi'];
+                $profile->direccion = $_POST['UserProfile']['direccion'];
+                $profile->ciudad = $_POST['UserProfile']['ciudad'];
+                $profile->pais = $_POST['UserProfile']['pais'];
+                
+                if(!empty($image)){
+                    $profile->image=CUploadedFile::getInstance($profile,'image');
+                    $profile->foto_perfil=Yii::app()->user->id . '.' . $profile->image->getExtensionName();
+                
+                    $folder = Yii::getPathOfAlias('webroot').'/images/profile/'.Yii::app()->user->id;
+                    mkdir($folder);
+                }
+               
+     
+                if($profile->save()){
+                    
+                    if(!empty($image)){
+                        $profile->image->saveAs($folder .'/'.Yii::app()->user->id . '.' . $profile->image->getExtensionName());
+                    }
+ 
+                    $this->redirect(array('/userProfile/index'));
+                }else{
+                    echo"<pre>PerfildeUsuario";
+                    var_dump($profile->Errors);
+                    exit;
+                }     
+        }else {     
+            
+           $image = CUploadedFile::getInstance($profile,'image');
+          
+            
+                $update->nombres = $_POST['UserProfile']['nombres'];
+                $update->apellidos = $_POST['UserProfile']['apellidos'];
+                $update->sobre_mi = $_POST['UserProfile']['sobre_mi'];
+                $update->direccion = $_POST['UserProfile']['direccion'];
+                $update->ciudad = $_POST['UserProfile']['ciudad'];
+                $update->pais = $_POST['UserProfile']['pais'];
+                
+                if(!empty($image)){ 
+                    
+                    $update->image=CUploadedFile::getInstance($profile,'image');
+                    $update->foto_perfil=Yii::app()->user->id . '.' . $update->image->getExtensionName();
+                    $folder = Yii::getPathOfAlias('webroot').'/images/profile/'.Yii::app()->user->id;
+                }
+                
+                
+                 
+                if($update->update()){  
+                    
+                        if(!empty($image)){ 
+                            $update->image->saveAs($folder .'/'.Yii::app()->user->id . '.' . $update->image->getExtensionName());
+                        }
+                     
+                     $this->redirect(array('/userProfile/index'));
+                     
+                }else{
+                    echo"<pre>UpdatePerfildeUsuario";
+                    var_dump($update->Errors);
+                    exit;
+                }
+            
+        }
+    }
+        
     $this->render('/user/index', array(
         'profile'=>$profile, 
         'media'=>$media,

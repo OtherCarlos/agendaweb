@@ -7712,3 +7712,201 @@ Stack trace:
 REQUEST_URI=/agenda/calendario/admin/date/assets/img/favicon.ico
 HTTP_REFERER=http://localhost/agenda/calendario/admin/date/2017-10-31
 ---
+2017/10/28 17:57:21 [error] [exception.CException] exception 'CException' with message 'El asset "/var/www/agendaweb/protected/extensions/booster/assets a ser publicado no existe.' in /var/www/yii/framework/web/CAssetManager.php:257
+Stack trace:
+#0 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#1 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#3 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#5 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#6 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#7 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#8 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#9 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#10 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#11 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 17:59:19 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 17:59:27 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 17:59:33 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 17:59:34 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 17:59:34 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 18:00:07 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 18:00:15 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/agendaweb/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/agenda...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/agenda...', false, -1, false)
+#3 /var/www/agendaweb/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(260): require('/var/www/agenda...')
+#5 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/agendaweb/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(168): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/agenda...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/agenda...')
+#12 /var/www/agendaweb/index.php(13): YiiBase::createWebApplication('/var/www/agenda...')
+#13 {main}
+REQUEST_URI=/agendaweb/
+HTTP_REFERER=http://localhost/
+---
+2017/10/28 18:00:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "js/jquery.min.js"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.j...')
+#1 /var/www/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /var/www/agendaweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/agendaweb/js/jquery.min.js
+HTTP_REFERER=http://localhost/agendaweb/
+---
+2017/10/28 18:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "js/jquery.min.js"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.j...')
+#1 /var/www/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /var/www/agendaweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/agendaweb/js/jquery.min.js
+HTTP_REFERER=http://localhost/agendaweb/
+---
+2017/10/28 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "assets" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('assets')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('assets')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/assets/img...')
+#3 /var/www/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/agendaweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/agendaweb/site/assets/img/favicon.ico
+---
+2017/10/28 18:00:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "assets" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('assets')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('assets')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/ass...')
+#3 /var/www/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/agendaweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/agendaweb/userProfile/assets/img/favicon.ico
+---
+2017/10/28 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "assets" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('assets')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('assets')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('calendario/asse...')
+#3 /var/www/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/agendaweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/agendaweb/calendario/assets/img/favicon.ico
+---
