@@ -127,7 +127,7 @@ class Calendar {
              
          
         return ($cellNumber%7==1?' <div class="row"> ': '') . '<a id="li-'.$this->currentDate.'" class="'.
-                ($cellContent==null?'mask':''). ' ' .(!empty($this->currentDate)?'pointer':'').' col-md-1"  style="width: 13%;" href="'.$admin.'date/'.$this->currentDate.'">'.$cellContent.'</a>'.($cellNumber%7==0?' </div> ':' ');
+                ($cellContent==null?'mask':''). ' ' .(!empty($this->currentDate)?(($this->currentDate)==(date("Y-m-d"))?'pointer-now':'pointer'):'').' col-md-1"  style="width: 13%;" href="'.($cellContent==null?'#':$admin.'date/'.$this->currentDate).'">'.$cellContent.'</a>'.($cellNumber%7==0?' </div> ':' ');
     }
      
     /**

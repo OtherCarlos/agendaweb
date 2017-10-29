@@ -702,21 +702,28 @@ body > .navbar-collapse {
   top: 50%;
   margin-top: -1px;
   right: 8px; }
-.btn-button-animate button {
+.btn-button-animate {
     color: #FFF;
     border: solid 1px #FFF;
-}
-.btn-button-animate button .calendar-button-top {
-    text-transform: capitalize;
+    background-color: #FB404B;
     text-align: center;
-    border: solid 1px #FFF;
-    background-color: #FB404B;
-    
+    border-radius: 5px;
+    margin-right: 15px;
 }
-.btn-button-animate button .calendar-button-content {
-    font-size: 2em;
-    border: solid 1px #FFF;
-    background-color: #FB404B;
+.btn-button-animate .calendar-button-top {
+    text-transform: capitalize;
+    font-size: 2rem;
+    margin: 20px;
+}
+.btn-button-animate hr {
+    width: 100%;
+    background-color: #FFF;
+    height: 1px;
+    border: none;
+}
+.btn-button-animate .calendar-button-content {
+    font-size: 6rem;
+    margin: 20px;
 }
 .btn-button-with-icon {
     position: relative;

@@ -19,6 +19,13 @@ $fecha = str_replace("/","-",$date);
         }
         ?>
     </div>
+    <?php
+    if (isset($count)) {
+        ?>
+    <hr style="width: 95%; margin: 0 auto; height: 1px; background-color: #FB404B; border: none; margin-top: 20px; margin-bottom: 20px;" />
+        <?php
+    }
+    ?>
     
 
 <?php 
@@ -64,13 +71,21 @@ $this->widget('booster.widgets.TbGridView',array(
 } else {
 
     ?>
-<div class="alert alert-info">
-    <span>No se encontraron registros para esta fecha.</span>
+<div class="row" style="margin-top: 20px; padding: 20px; display: flex;">
+<div class="col-md-8" style="flex: 1;">
+    <div class="alert alert-info" style="margin-bottom: 0px;">
+        <div class="row">
+            <div class="col-md-4 text-center"><span class="fa fa-info" style="font-size: 10em;"></span></div>
+        <div class="col-md-8"><span><b>No se encontraron registros para esta fecha.</b><br/>Por favor, haga clic en el botón del calendario con la fecha actual para crear un nuevo registro.</span></div>
+        </div>
+    </div>
 </div>
-<div class="form-actions btn-button-animate">
-    <button onclick="location.href='<?= Yii::app()->request->baseUrl ?>/calendario/create/date/<?= $date ?>';"><div class="calendar-button-top"><?= strftime('%B',strtotime($fecha)) ?></div><div class="calendar-button-content"><?= strftime('%d',strtotime($date)) ?></div></button>
+<button onclick="location.href='<?= Yii::app()->request->baseUrl ?>/calendario/create/date/<?= $date ?>';" class="btn-button-animate col-md-4" style="flex: 1;">
+    <span class="calendar-button-top"><?= strftime('%B',strtotime($fecha)) ?></span>
+    <hr>
+    <span class="calendar-button-content"><?= strftime('%d',strtotime($date)) ?></span>
+</button>
 </div>
-
 <?php
 }
 ?>

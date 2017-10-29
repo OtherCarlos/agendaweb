@@ -124,6 +124,23 @@ div#calendar .dates .row .pointer:hover {
     background-color: #fa1e2d;
     color:#FFF;
 }
+
+div#calendar .dates .row .pointer-now {
+    cursor: pointer; 
+    transition: ease all 500ms;
+    background-color: transparent;
+    border: solid 1px #fa1e2d;
+    color: #fa1e2d;
+}
+
+div#calendar .dates .row .pointer-now:hover {
+    
+    transition: ease all 800ms;
+    background-color: #fa1e2d;
+    color:#FFF;
+}
+
+
  
 :focus{
     outline:none;
