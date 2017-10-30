@@ -136,9 +136,9 @@
 	<?php endif?>
         <div class="content">
             <div class="container-fluid">
-	<?php echo $content; ?>
-                    </div>
+                <?php echo $content; ?>
             </div>
+        </div>
 
 	<div class="clear"></div>
         

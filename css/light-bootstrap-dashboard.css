@@ -814,6 +814,64 @@ body > .navbar-collapse {
   .open .form-control {
     border-radius: 4px 4px 0 0;
     border-bottom-color: transparent; }
+   #calendario-update-form .media-content .col-md-6 {
+      padding: 10px;
+  }
+  #calendario-update-form .row {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+  #calendario-update-form .media-content .col-md-6 #video, #calendario-update-form .media-content .col-md-6 #image {
+      border: 2px solid #A4A4A4;
+      border-radius: 5px;
+      padding: 10px;
+  }
+  #calendario-update-form .media-content .col-md-6 h1 {
+      font-size: 2rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: 2px solid #A4A4A4;
+  }
+  #calendario-update-form #plus {
+      margin: 0 auto;
+      background-color: #FF0000;
+      color: #FFF;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      line-height: 20px;
+  }
+  #calendario-update-form #video .row {
+      margin: 0px !important;
+  }
+  #calendario-update-form #video .col-md-2 {
+      background-color: #FF0000;
+      color: #FFF;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      line-height: 20px;
+  }
+  #calendario-update-form #plus_img {
+      margin: 0 auto;
+      background-color: #FF0000;
+      color: #FFF;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      line-height: 20px;
+  }
+  #calendario-update-form #image .row {
+      margin: 0px !important;
+  }
+  #calendario-update-form #image .col-md-2 {
+      background-color: #FF0000;
+      color: #FFF;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      line-height: 20px;
+  }
 
 .input-lg {
   height: 55px;

@@ -31,7 +31,7 @@ $fecha = str_replace("/","-",$date);
 <?php 
 if(isset($count)){
     ?>
-    <div class="row" style="margin: 0 auto; padding: 0px 20px;">
+    <div class="row" style="margin: 0 auto; padding: 0px 20px; padding-bottom: 20px;">
     <?php
 $this->widget('booster.widgets.TbGridView',array(
 'id'=>'calendario-grid',
@@ -40,20 +40,26 @@ $this->widget('booster.widgets.TbGridView',array(
 'filter'=>$model,
 'dataProvider' => $model->searchByDate($date),
 'columns'=>array(
-		'id_calendario' => array(
-                    'name'=> 'id_calendario',
-                    'header'=> 'ID',
-                    'value'=>'$data->id_calendario'
-                ),
-		'titulo' => array(
-                    'name'=> 'titulo',
-                    'header'=> 'TÍTULO',
-                    'value'=>'$data->titulo'
-                ),
 		'fecha_calendario' => array(
                     'name'=> 'fecha_calendario',
                     'header'=> 'FECHA',
                     'value'=>'$data->fecha_calendario'
+                ),
+		'fecha_calendario_day' => array(
+                    'name'=> 'fecha_calendario',
+                    'header'=> 'DÍA',
+                    'value'=>'strftime("%A",strtotime($data->fecha_calendario))',
+                    'htmlOptions'=>array(
+                        'style'=>'text-transform: capitalize', 
+                    ),
+                ),
+		'titulo' => array(
+                    'name'=> 'titulo',
+                    'header'=> 'TÍTULO',
+                    'value'=>'$data->titulo',
+                    'htmlOptions'=>array(
+                        'style'=>'width: 450px;', 
+                    ),
                 ),
 		'created_date' => array(
                     'name'=> 'created_date',
@@ -62,6 +68,40 @@ $this->widget('booster.widgets.TbGridView',array(
                 ),
                 array(
                 'class'=>'booster.widgets.TbButtonColumn',
+                'template'=>'{contenido}{multimedia}{publicar}{eliminar}',
+                'htmlOptions'=>array(
+                    'style'=>'width: 150px; text-align:center; letter-spacing: 4px;', 
+                ),
+                'buttons'=>array(
+                        'contenido' => array
+                        (
+                            'label'=>'Agregar Contenido',
+                            'icon'=>'file',
+                            'url'=>'Yii::app()->createUrl("calendario/update", array("id"=>$data->id_calendario))',
+                            'visible'=>'Yii::app()->user->checkAccess("contenido")',
+                        ),
+                        'multimedia' => array
+                        (
+                            'label'=>'Modificar Multimedia',
+                            'icon'=>'film',
+                            'url'=>'Yii::app()->createUrl("calendario/update_media", array("id"=>$data->id_calendario))',
+                            'visible'=>'Yii::app()->user->checkAccess("multimedia")',
+                        ),
+                        'publicar' => array
+                        (
+                            'label'=>'Modificar Multimedia',
+                            'icon'=>'comment',
+                            'url'=>'Yii::app()->createUrl("calendario/update_media", array("id"=>$data->id_calendario))',
+                            'visible'=>'Yii::app()->user->checkAccess("publicador")',
+                        ),
+                        'eliminar' => array
+                        (
+                            'label'=>'Eliminar',
+                            'icon'=>'trash',
+                            'url'=>'Yii::app()->createUrl("calendario/delete", array("id"=>$data->id_calendario))',
+                            'visible'=>'Yii::app()->user->checkAccess("agenda")',
+                        ),
+                    ),
                 ),
 ),
 )); 

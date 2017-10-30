@@ -40,7 +40,7 @@
 
 
    
-   if ($roll == 'administrador_tecnologia') { //echo 'aquii'; die;
+   if ($roll == 'admin') { //echo 'aquii'; die;
       // var_dump($roll);die();
        ?> 
     

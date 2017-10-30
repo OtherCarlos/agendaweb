@@ -1,18 +1,7 @@
 <?php
-$this->breadcrumbs=array(
-	'Calendarios'=>array('index'),
-	$model->id_calendario=>array('view','id'=>$model->id_calendario),
-	'Update',
-);
+$baseUrl = Yii::app()->baseUrl;
+$validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/util.js');
+?>
+<h1>Actualizar Información para el día <?php echo $model->fecha_calendario; ?></h1>
 
-	$this->menu=array(
-	array('label'=>'List Calendario','url'=>array('index')),
-	array('label'=>'Create Calendario','url'=>array('create')),
-	array('label'=>'View Calendario','url'=>array('view','id'=>$model->id_calendario)),
-	array('label'=>'Manage Calendario','url'=>array('admin')),
-	);
-	?>
-
-	<h1>Update Calendario <?php echo $model->id_calendario; ?></h1>
-
-<?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form_update',array('model'=>$model, 'contenido'=>$contenido)); ?>
