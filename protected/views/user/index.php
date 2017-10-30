@@ -1,3 +1,7 @@
+<script>
+$('#nav-perfil').addClass('active');
+</script>
+
 <?php
 $baseUrl = Yii::app()->baseUrl;
 $validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/util.js');
@@ -15,11 +19,11 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        
+
                         <h4 class="title">Perfil del Usuario
                             <button type="button" class="btn btn-info btn-fill pull-right" id="button_editar">Editar Perfil</button>
                         </h4>
-                       
+
                     </div>
 
                     <div class="content">
@@ -147,7 +151,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                 <div class="card card-user">
                     <div class="image">
                         <?php echo $form->fileField($profile, 'image'); ?>
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                        <img src="<?= Yii::app()->request->baseUrl ?>/images/profile_user.jpeg"/>
                     </div>
                     <div class="content">
                         <div class="author">
@@ -159,12 +163,11 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                                 </h4>
                             </a>
                         </div>
-                        <div class="col-md-12">
-                            <span class="col-md-4 col-md-offset-4" style="text-align: center;">
-                                <?php 
-                                echo $profile->sobre_mi;                          
-                                 ?>
-                            </span>
+                        <div class="col-md-12" style="text-align: center;">
+                                <?php
+                                echo $profile->sobre_mi;
+                                ?>
+                   
                         </div>
                     </div>
                     <hr>

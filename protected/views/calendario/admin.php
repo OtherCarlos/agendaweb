@@ -1,3 +1,7 @@
+<script>
+$('#nav-calendario').addClass('active');
+</script>
+
 <div class="card">
 <?php
 setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
@@ -68,7 +72,7 @@ $this->widget('booster.widgets.TbGridView',array(
                 ),
                 array(
                 'class'=>'booster.widgets.TbButtonColumn',
-                'template'=>'{contenido}{multimedia}{publicar}{eliminar}',
+                'template'=>'{contenido}{multimedia}{publicar}{ver}{eliminar}',
                 'htmlOptions'=>array(
                     'style'=>'width: 150px; text-align:center; letter-spacing: 4px;', 
                 ),
@@ -93,6 +97,13 @@ $this->widget('booster.widgets.TbGridView',array(
                             'icon'=>'comment',
                             'url'=>'Yii::app()->createUrl("calendario/update_media", array("id"=>$data->id_calendario))',
                             'visible'=>'Yii::app()->user->checkAccess("publicador")',
+                        ),
+                        'ver' => array
+                        (
+                                    'label' => 'Ver Actividad',
+                                    'icon' => 'eye-open',
+                                    'size' => 'medium',
+                                    'url' => 'Yii::app()->createUrl("Calendario/View", array("id" => $data->id_calendario))',
                         ),
                         'eliminar' => array
                         (

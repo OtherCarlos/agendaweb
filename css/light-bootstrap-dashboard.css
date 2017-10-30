@@ -14,6 +14,9 @@
  
  */
 /*      light colors         */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+
 @keyframes spin {
   from {
     transform: rotate(0deg); }
@@ -929,6 +932,57 @@ body > .navbar-collapse {
 
 .input-group-focus .input-group-addon {
   border-color: #9A9A9A; }
+
+.row-create{
+    background-color: #fb404b;
+    color: #fff;
+    font-size: 15px;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 15px;
+}
+
+#calendario-form input, #calendario-form textarea{
+    border: 2px solid #A79E98; 
+    background-color: transparent; 
+    border-radius: 5px;
+}
+#calendario-form input:focus, #calendario-form textarea:focus{
+    border: 2px solid #fb404b; 
+}
+
+.info-calendario{
+    border: 1px solid #FAFE36;
+    height: 180px;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #FAFE36;
+    
+}
+.boton_css{
+ 
+  background-color: transparent !important;
+  border-radius: 5px;
+  color: #36302D !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 15px !important;
+  width: 70%;
+  margin-top: 25px;
+  transition: ease 600ms all;
+  cursor: pointer;
+  text-align: center;
+  padding: 15px 20px !important;
+ 
+}
+
+
+.boton_css:hover{
+     background-color: #A79E98 !important;
+     color: #FFF !important;
+     transition: ease 700ms all;
+}
 
 .alert {
   border: 0;

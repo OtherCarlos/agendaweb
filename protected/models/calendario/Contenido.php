@@ -25,6 +25,7 @@ class Contenido extends CActiveRecord
 {
         public $image;
         public $video;
+
 	/**
 	 * @return string the associated database table name
 	 */

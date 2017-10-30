@@ -66,36 +66,32 @@ $model=new Calendario;
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
-if(isset($_POST['Calendario']))
-{
-$model->titulo=$_POST['Calendario']['titulo'];
-$model->resumen=$_POST['Calendario']['resumen'];
-$model->fecha_calendario=$date;
-$model->created_by=Yii::app()->user->id;
-$model->modified_by=Yii::app()->user->id;
-$model->fk_estatus=2;
-$model->modified_date='now()';
-$model->created_date='now()';
-$model->es_activo = true;
-if($model->save())
-$this->redirect(array('view','id'=>$model->id_calendario));
-}
+        if (isset($_POST['Calendario'])) {
+            $model->titulo = $_POST['Calendario']['titulo'];
+            $model->resumen = $_POST['Calendario']['resumen'];
+            $model->fecha_calendario = $date;
+            $model->created_by = Yii::app()->user->id;
+            $model->modified_by = Yii::app()->user->id;
+            $model->fk_estatus = 2;
+            $model->modified_date = 'now()';
+            $model->created_date = 'now()';
+            $model->es_activo = true;
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id_calendario));
+        }
 
-$this->render('create',array(
-'model'=>$model,
-));
-}
+        $this->render('create', array(
+            'model' => $model,
+        ));
+    }
 
-/**
-* Updates a particular model.
-* If update is successful, the browser will be redirected to the 'view' page.
-* @param integer $id the ID of the model to be updated
-*/
-public function actionUpdate($id)
-{
-$model=$this->loadModel($id);
-$contenido=new Contenido;
-
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate($id) {
+        $model = $this->loadModel($id);
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
@@ -189,73 +185,68 @@ public function actionDelete($id)
 if(Yii::app()->request->isPostRequest)
 {
 // we only allow deletion via POST request
-$this->loadModel($id)->delete();
+            $this->loadModel($id)->delete();
 
 // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-if(!isset($_GET['ajax']))
-$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-}
-else
-throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-}
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        } else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
 
-/**
-* Lists all models.
-*/
-public function actionIndex()
-{
-$calendario = new Calendario;
-$dataProvider=new CActiveDataProvider('Calendario');
-$this->render('index',array(
-'dataProvider'=>$dataProvider, 'calendario'=>$calendario,
-));
-}
+    /**
+     * Lists all models.
+     */
+    public function actionIndex() {
+        $calendario = new Calendario;
+        $dataProvider = new CActiveDataProvider('Calendario');
+        $this->render('index', array(
+            'dataProvider' => $dataProvider, 'calendario' => $calendario,
+        ));
+    }
 
-/**
-* Manages all models.
-*/
-public function actionAdmin($date)
-{
-$model=new Calendario('search');
-$model->unsetAttributes();  // clear any default values
-if(isset($_GET['Calendario']))
-$model->attributes=$_GET['Calendario'];
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin($date) {
+        $model = new Calendario('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['Calendario']))
+            $model->attributes = $_GET['Calendario'];
 
-$criteria = new CDbCriteria();
-$criteria->condition = 'fecha_calendario = :fecha_calendario';
-$criteria->params = array(':fecha_calendario' => $date);
-$count = Calendario::model()->find($criteria);
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'fecha_calendario = :fecha_calendario';
+        $criteria->params = array(':fecha_calendario' => $date);
+        $count = Calendario::model()->find($criteria);
 
-$this->render('admin',array(
-'model'=>$model,
-'date'=>$date,
-'count'=>$count,
-));
-}
+        $this->render('admin', array(
+            'model' => $model,
+            'date' => $date,
+            'count' => $count,
+        ));
+    }
 
-/**
-* Returns the data model based on the primary key given in the GET variable.
-* If the data model is not found, an HTTP exception will be raised.
-* @param integer the ID of the model to be loaded
-*/
-public function loadModel($id)
-{
-$model=Calendario::model()->findByPk($id);
-if($model===null)
-throw new CHttpException(404,'The requested page does not exist.');
-return $model;
-}
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer the ID of the model to be loaded
+     */
+    public function loadModel($id) {
+        $model = Calendario::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
+    }
 
-/**
-* Performs the AJAX validation.
-* @param CModel the model to be validated
-*/
-protected function performAjaxValidation($model)
-{
-if(isset($_POST['ajax']) && $_POST['ajax']==='calendario-form')
-{
-echo CActiveForm::validate($model);
-Yii::app()->end();
-}
-}
+    /**
+     * Performs the AJAX validation.
+     * @param CModel the model to be validated
+     */
+    protected function performAjaxValidation($model) {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'calendario-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
+
 }
