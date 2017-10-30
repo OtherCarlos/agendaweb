@@ -1,3 +1,7 @@
+<script>
+$('#nav-calendario').addClass('active');
+</script>
+
 <div class="card">
 <?php
 setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
@@ -62,9 +66,18 @@ $this->widget('booster.widgets.TbGridView',array(
                 ),
                 array(
                 'class'=>'booster.widgets.TbButtonColumn',
-                ),
-),
-)); 
+                'htmlOptions' => array('width' => '150', 'style' => 'text-align: center; font-size: 20px;'),
+                'template' => '{ver}',
+                'buttons' => array(
+                    
+                    'ver' => array(
+                    'label' => 'Ver Actividad',
+                    'icon' => 'eye-open',
+                    'size' => 'medium',
+                    'url' => 'Yii::app()->createUrl("Calendario/View", array("id" => $data->id_calendario))',
+                 ),
+                    
+))))); 
 ?>
    </div>     
         <?php

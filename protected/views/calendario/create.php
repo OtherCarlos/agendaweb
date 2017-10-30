@@ -1,15 +1,17 @@
-<?php
-$this->breadcrumbs=array(
-	'Calendarios'=>array('index'),
-	'Create',
-);
+<script>
+$('#nav-calendario').addClass('active');
+</script>
 
-$this->menu=array(
-array('label'=>'List Calendario','url'=>array('index')),
-array('label'=>'Manage Calendario','url'=>array('admin')),
-);
-?>
+<div class="row-create">
+    AGENDAR ACTIVIDAD
+</div>
+      
 
-<h1>Create Calendario</h1>
+<div class="card">
+    <div class="content">
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+        <?php echo $this->renderPartial('_form', array('model' => $model)); ?>
+
+    </div>
+</div>
+

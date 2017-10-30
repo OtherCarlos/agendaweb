@@ -1,3 +1,7 @@
+<script>
+$('#nav-calendario').addClass('active');
+</script>
+
 <?php
 $baseUrl = Yii::app()->baseUrl; 
 Yii::app()->getClientScript()->registerCssFile($baseUrl.'/css/calendar.css');
