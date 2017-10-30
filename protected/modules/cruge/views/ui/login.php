@@ -63,9 +63,6 @@
                     <h3>Organiza tus Tareas</h3>
                 </header>
                 <p>Agrega tus activades en tu agenda personal y<br />de forma detallada, para obtener un mayor control<br />de tus tareas.</p>
-                <footer>
-                    <a href="#" class="button">Información</a>
-                </footer>
             </article>
             <article>
                 <div class="image round">
@@ -75,9 +72,6 @@
                     <h3>Sube archivos Multimedia</h3>
                 </header>
                 <p>Sube imágenes o vídeos una vez terminadas<br /> tus actividades con el fin de organizar y llevar un mayor control<br /> de tu labores.</p>
-                <footer>
-                    <a href="#" class="button">Información</a>
-                </footer>
             </article>
         </div>
     </div>
