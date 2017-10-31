@@ -50,8 +50,10 @@ array('deny',  // deny all users
 */
 public function actionView($id)
 {
+$contenido= Contenido::model()->findAllByAttributes(array('fk_calendario'=>$id,'es_activo'=>TRUE));
 $this->render('view',array(
-'model'=>$this->loadModel($id),
+'view'=>$this->loadModel($id),
+'contenido'=>$contenido,
 ));
 }
 
@@ -92,6 +94,7 @@ $model=new Calendario;
      */
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
+        $contenido = new Contenido;
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 

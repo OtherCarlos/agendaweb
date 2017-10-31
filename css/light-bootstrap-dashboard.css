@@ -835,7 +835,7 @@ body > .navbar-collapse {
       text-align: center;
       border-bottom: 2px solid #A4A4A4;
   }
-  #calendario-update-form #plus {
+  #calendario-update-form #plus, #calendario-update-form #plus_img {
       margin: 0 auto;
       background-color: #FF0000;
       color: #FFF;
@@ -843,19 +843,20 @@ body > .navbar-collapse {
       border-radius: 3px;
       font-size: 1.5rem;
       line-height: 20px;
+      font-weight: 700;
+      transition: ease all 500ms;
+      cursor: pointer;
   }
-  #calendario-update-form #video .row {
+   #calendario-update-form #plus:hover, #calendario-update-form #plus_img:hover {
+      background-color: transparent;
+      color: #FF0000;
+      border: 2px solid #FF0000;
+      transition: ease all 500ms;
+  }
+  #calendario-update-form #image .row, #calendario-update-form #video .row {
       margin: 0px !important;
   }
-  #calendario-update-form #video .col-md-2 {
-      background-color: #FF0000;
-      color: #FFF;
-      text-align: center;
-      border-radius: 3px;
-      font-size: 1.5rem;
-      line-height: 20px;
-  }
-  #calendario-update-form #plus_img {
+  #calendario-update-form #image .col-md-2, #calendario-update-form #video .col-md-2 {
       margin: 0 auto;
       background-color: #FF0000;
       color: #FFF;
@@ -863,17 +864,15 @@ body > .navbar-collapse {
       border-radius: 3px;
       font-size: 1.5rem;
       line-height: 20px;
+      font-weight: 700;
+      transition: ease all 500ms;
+      cursor: pointer;
   }
-  #calendario-update-form #image .row {
-      margin: 0px !important;
-  }
-  #calendario-update-form #image .col-md-2 {
-      background-color: #FF0000;
-      color: #FFF;
-      text-align: center;
-      border-radius: 3px;
-      font-size: 1.5rem;
-      line-height: 20px;
+  #calendario-update-form #image .col-md-2:hover, #calendario-update-form #video .col-md-2:hover {
+      background-color: transparent;
+      color: #FF0000;
+      border: 2px solid #FF0000;
+      transition: ease all 500ms;
   }
 
 .input-lg {
