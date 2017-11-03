@@ -112,6 +112,11 @@ $(document).ready(function(){
 
         });
         
+        
+        $("#button_file").click(function(){
+           $("#UserProfile_image").click(); 
+        });
+        
 });
 
 function makeSubmit () {

@@ -1,5 +1,5 @@
 <script>
-$('#nav-perfil').addClass('active');
+    $('#nav-perfil').addClass('active');
 </script>
 
 <?php
@@ -150,25 +150,65 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
             <div class="col-md-4">
                 <div class="card card-user">
                     <div class="image">
-                        <?php echo $form->fileField($profile, 'image'); ?>
                         <img src="<?= Yii::app()->request->baseUrl ?>/images/profile_user.jpeg"/>
                     </div>
                     <div class="content">
-                        <div class="author">
+                        <div class="author" >
                             <a href="#">
-                                <img class="avatar border-gray" src="<?= Yii::app()->request->baseUrl ?>/images/profile/<?= Yii::app()->user->id . '/' . $profile['foto_perfil'] ?>" alt="..."/>
+                                
+                                <?php
+                                if (empty($profile['foto_perfil'])) {
+                                    ?>  
+                                    <img class="avatar border-gray" src="<?= Yii::app()->request->baseUrl ?>/images/user.png" alt="..."/>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <img class="avatar border-gray" src="<?= Yii::app()->request->baseUrl ?>/images/profile/<?= Yii::app()->user->id . '/' . $profile['foto_perfil'] ?>" alt="..."/>
+                                <?php } ?>
 
-                                <h4 class="title">Mike Andrew<br />
-                                    <small>michael24</small>
+
+                                <h4 class="title"><?= $user["username"] ?><br />
+                                    
+                                    <?php 
+                                       if(empty($profile['nombres'])){
+                                           
+                                       }else{  
+                                         
+                                        $profile['nombres'];
+                                        $primer_nombre = explode(' ', $profile['nombres']);
+                                        
+                                        $profile['apellidos'];
+                                        $primer_apellido = explode(' ', $profile['apellidos']);
+                                           
+                                           ?>
+                                     
+                                    <small> <?= $primer_nombre[0] .' '.$primer_apellido[0] ?></small>
+                                    
+                                    <?php }  ?>
+                                   
                                 </h4>
                             </a>
                         </div>
                         <div class="col-md-12" style="text-align: center;">
-                                <?php
-                                echo $profile->sobre_mi;
-                                ?>
-                   
+                            <?php
+                            echo $profile->sobre_mi;
+                            ?>
+
                         </div>
+                        
+                        <div class="row" style="display: none;">
+                            <div>
+                            <?php echo $form->fileField($profile, 'image'); ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="button_file" class="button_file">
+                                    <span class="fa fa-upload"></span>Seleccionar archivo
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <hr>
                     <div class="text-center">
