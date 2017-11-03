@@ -159,7 +159,9 @@ public function actionIndex() {
                     $profile->foto_perfil=Yii::app()->user->id . '.' . $profile->image->getExtensionName();
                 
                     $folder = Yii::getPathOfAlias('webroot').'/images/profile/'.Yii::app()->user->id;
-                    mkdir($folder);
+                   if (!file_exists($folder)) {
+                        mkdir($folder);
+                    }
                 }
                
      
