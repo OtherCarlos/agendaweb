@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index','view','create','update','update_media','admin'),
+'actions'=>array('index','view','create','update','update_media','download','admin'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -107,7 +107,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             $contenido=new Contenido;
             $contenido->video=$video;
             $contenido->image=null;
-            $contenido->url='/videos/calendario/'.$id;
+            $contenido->url='/videos/calendario/'.$id.'/';
             $contenido->nombre=$video->getName();
             $contenido->fk_tipo_contenido = 9;
             $contenido->fk_calendario = $id;
@@ -124,7 +124,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             
             if($contenido->save()){
                     if(!empty($video_validar)){
-                        $contenido->video->saveAs($folder .'/'. $video->getName() . '.' . $video->getExtensionName());
+                        $contenido->video->saveAs($folder .'/'. $video->getName());
                     }
                  }else{
                     echo"<pre>Video";
@@ -138,7 +138,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             $contenido=new Contenido;
             $contenido->image=$image;
             $contenido->video=null;
-            $contenido->url='/images/calendario/'.$id;
+            $contenido->url='/images/calendario/'.$id.'/';
             $contenido->nombre=$image->getName();
             $contenido->fk_tipo_contenido = 8;
             $contenido->fk_calendario = $id;
@@ -155,7 +155,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             
             if($contenido->save()){
                     if(!empty($image_validar)){
-                        $contenido->image->saveAs($folder .'/'. $image->getName() . '.' . $image->getExtensionName());
+                        $contenido->image->saveAs($folder .'/'. $image->getName());
                     }
                  }else{
                     echo"<pre>Imagen";
@@ -186,11 +186,11 @@ public function actionUpdate_media($id) {
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
-if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
+if((isset($_POST['Contenido'])))
 {   
         
         $video_validar = CUploadedFile::getInstances($contenido,'video');
-
+        $videos = 0;
         foreach($video_validar as $video){
             $contenido=new Contenido;
             $contenido->video=$video;
@@ -202,7 +202,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             $contenido->fk_estatus = 5;
             $contenido->created_date = "now()";
             $contenido->created_by = Yii::app()->user->id;
-            $contenido->version = "1";
+            $contenido->version = "2";
             
             $folder = Yii::getPathOfAlias('webroot').'/videos/calendario/'.$id;
             if (!file_exists($folder)) {
@@ -212,7 +212,8 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             
             if($contenido->save()){
                     if(!empty($video_validar)){
-                        $contenido->video->saveAs($folder .'/'. $video->getName() . '.' . $video->getExtensionName());
+                        $contenido->video->saveAs($folder .'/'. $video->getName());
+                        $videos++;
                     }
                  }else{
                     echo"<pre>Video";
@@ -222,18 +223,19 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
         }
  
         $image_validar = CUploadedFile::getInstances($contenido,'image');
+        $images = 0;
         foreach($image_validar as $image){
             $contenido=new Contenido;
             $contenido->image=$image;
             $contenido->video=null;
-            $contenido->url='/image/calendario/'.$id;
+            $contenido->url='/images/calendario/'.$id;
             $contenido->nombre=$image->getName();
             $contenido->fk_tipo_contenido = 8;
             $contenido->fk_calendario = $id;
             $contenido->fk_estatus = 5;
             $contenido->created_date = "now()";
             $contenido->created_by = Yii::app()->user->id;
-            $contenido->version = "1";
+            $contenido->version = "2";
             
             $folder = Yii::getPathOfAlias('webroot').'/images/calendario/'.$id;
             if (!file_exists($folder)) {
@@ -243,7 +245,8 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
             
             if($contenido->save()){
                     if(!empty($image_validar)){
-                        $contenido->image->saveAs($folder .'/'. $image->getName() . '.' . $image->getExtensionName());
+                        $contenido->image->saveAs($folder .'/'. $image->getName());
+                        $images++;
                     }
                  }else{
                     echo"<pre>Imagen";
@@ -252,10 +255,7 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
                 }     
         }
 
-    
-//    die;
-$model->attributes=$_POST['Calendario'];
-if($model->save()){
+if(((count($_POST['Contenido']['image'])+count($_POST['Contenido']['video']))==($videos+$images))){
 $this->redirect(array('view','id'=>$model->id_calendario));
 }
 }
@@ -267,6 +267,13 @@ $this->render('update_media',array(
 'video'=>$video,
 ));
 }
+
+
+public function actionDownload($url, $name){
+    $url = str_replace('-', '/', $url);
+    Yii::app()->getRequest()->sendFile($name, file_get_contents(Yii::getPathOfAlias('webroot') . $url . $name));
+}
+
 
 /**
 * Deletes a particular model.
