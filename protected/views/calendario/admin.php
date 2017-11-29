@@ -93,9 +93,9 @@ $this->widget('booster.widgets.TbGridView',array(
                         ),
                         'publicar' => array
                         (
-                            'label'=>'Modificar Multimedia',
+                            'label'=>'Crear Publicación',
                             'icon'=>'comment',
-                            'url'=>'Yii::app()->createUrl("calendario/update_media", array("id"=>$data->id_calendario))',
+                            'url'=>'Yii::app()->createUrl("calendario/publicar", array("id"=>$data->id_calendario))',
                             'visible'=>'Yii::app()->user->checkAccess("publicador")',
                         ),
                         'ver' => array

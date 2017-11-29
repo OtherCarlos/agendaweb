@@ -126,8 +126,21 @@ class Calendar {
         }
              
          
-        return ($cellNumber%7==1?' <div class="row"> ': '') . '<a id="li-'.$this->currentDate.'" class="'.
-                ($cellContent==null?'mask':''). ' ' .(!empty($this->currentDate)?(($this->currentDate)==(date("Y-m-d"))?'pointer-now':'pointer'):'').' col-md-1"  style="width: 13%;" href="'.($cellContent==null?'#':$admin.'date/'.$this->currentDate).'">'.$cellContent.'</a>'.($cellNumber%7==0?' </div> ':' ');
+        return ($cellNumber%7==1?' <div class="row" style="display: flex;"> ': '') . '<a id="li-'.$this->currentDate.'" class="'.
+                ($cellContent==null?'mask':''). ' ' .(!empty($this->currentDate)?(($this->currentDate)==(date("Y-m-d"))?'pointer-now':'pointer'):'').' col-md-1"  style="width: 13%;" href="'.($cellContent==null?'#':$admin.'date/'.$this->currentDate).'">'
+                .'<div class="row">'.$cellContent.'</div>'
+                .(!empty($this->currentDate)?
+                    ((VswCalendario::model()->searchbydate($this->currentDate)!=0?
+                        ('<div class="row calendar-day-info"><div class="col-md-12 text-left"><span class="calendar-activity">'.VswCalendario::model()->searchbydate($this->currentDate).'</span> Actividades</div></div>').
+                        (VswCalendario::model()->searchbydate_content($this->currentDate)!=0?
+                            ('<div class="row calendar-day-info"><div class="col-md-12 text-left"><span class="calendar-content">'.VswCalendario::model()->searchbydate_content($this->currentDate).'</span> Contenido</div></div>').
+                            (VswCalendario::model()->searchbydate_media($this->currentDate)!=0?
+                                ('<div class="row calendar-day-info"><div class="col-md-12 text-left"><span class="calendar-media">'.VswCalendario::model()->searchbydate_media($this->currentDate).'</span> Multimedia</div></div>')
+                                :'')
+                            :'')
+                        :''))
+                    :'')
+                .'</a>'.($cellNumber%7==0?' </div> ':' ');
     }
      
     /**

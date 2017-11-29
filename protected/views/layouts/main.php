@@ -74,6 +74,12 @@
                                 <p>Perfil de Usuario</p>
                             </a>
                         </li>
+                        <li id="nav-perfil">
+                            <a href="<?php echo $this->createUrl('/cruge/ui/usermanagementadmin'); ?>">
+                                <i class="pe-7s-users"></i>
+                                <p>Administración de Usuarios</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

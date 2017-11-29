@@ -117,6 +117,10 @@ $(document).ready(function(){
            $("#UserProfile_image").click(); 
         });
         
+
+        $('#Publicaciones_publicacion').change(updateCountdown);
+        $('#Publicaciones_publicacion').keyup(updateCountdown);
+        
 });
 
 function makeSubmit () {
@@ -133,4 +137,10 @@ function makeSubmit () {
      $("#ytContenido_image").attr("id", "ytContenido_image_" + count);
      
      $("#calendario-update-form").submit();
+}
+
+function updateCountdown() {
+    // 140 is the max message length
+    var remaining = 140 - $('#Publicaciones_publicacion').val().length;
+    $('.countdown').html('<span class="number">' + remaining + '</span>caracteres restantes.');
 }

@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index','view','create','update','update_media','download','admin'),
+'actions'=>array('index','view','create','update','update_media','download','admin','publicar'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -188,74 +188,82 @@ public function actionUpdate_media($id) {
 
 if((isset($_POST['Contenido'])))
 {   
+        (isset($_POST['Contenido']['image'])?$count_image=count($_POST['Contenido']['image']):$count_image=0);
+        (isset($_POST['Contenido']['video'])?$count_video=count($_POST['Contenido']['video']):$count_video=0);
         
-        $video_validar = CUploadedFile::getInstances($contenido,'video');
         $videos = 0;
-        foreach($video_validar as $video){
-            $contenido=new Contenido;
-            $contenido->video=$video;
-            $contenido->image=null;
-            $contenido->url='/videos/calendario/'.$id;
-            $contenido->nombre=$video->getName();
-            $contenido->fk_tipo_contenido = 9;
-            $contenido->fk_calendario = $id;
-            $contenido->fk_estatus = 5;
-            $contenido->created_date = "now()";
-            $contenido->created_by = Yii::app()->user->id;
-            $contenido->version = "2";
+        if($count_video!=0){
+            $video_validar = CUploadedFile::getInstances($contenido,'video');
             
-            $folder = Yii::getPathOfAlias('webroot').'/videos/calendario/'.$id;
-            if (!file_exists($folder)) {
-                mkdir($folder);
+            foreach($video_validar as $video){
+                $contenido=new Contenido;
+                $contenido->video=$video;
+                $contenido->image=null;
+                $contenido->url='/videos/calendario/'.$id;
+                $contenido->nombre=$video->getName();
+                $contenido->fk_tipo_contenido = 9;
+                $contenido->fk_calendario = $id;
+                $contenido->fk_estatus = 5;
+                $contenido->created_date = "now()";
+                $contenido->created_by = Yii::app()->user->id;
+                $contenido->version = "2";
+
+                $folder = Yii::getPathOfAlias('webroot').'/videos/calendario/'.$id;
+                if (!file_exists($folder)) {
+                    mkdir($folder);
+                }
+
+
+                if($contenido->save()){
+                        if(!empty($video_validar)){
+                            $contenido->video->saveAs($folder .'/'. $video->getName());
+                            $videos++;
+                        }
+                     }else{
+                        echo"<pre>Video";
+                        var_dump($contenido->Errors);
+                        exit;
+                    }     
             }
-            
-            
-            if($contenido->save()){
-                    if(!empty($video_validar)){
-                        $contenido->video->saveAs($folder .'/'. $video->getName());
-                        $videos++;
-                    }
-                 }else{
-                    echo"<pre>Video";
-                    var_dump($contenido->Errors);
-                    exit;
-                }     
         }
- 
-        $image_validar = CUploadedFile::getInstances($contenido,'image');
+        
         $images = 0;
-        foreach($image_validar as $image){
-            $contenido=new Contenido;
-            $contenido->image=$image;
-            $contenido->video=null;
-            $contenido->url='/images/calendario/'.$id;
-            $contenido->nombre=$image->getName();
-            $contenido->fk_tipo_contenido = 8;
-            $contenido->fk_calendario = $id;
-            $contenido->fk_estatus = 5;
-            $contenido->created_date = "now()";
-            $contenido->created_by = Yii::app()->user->id;
-            $contenido->version = "2";
+        if($count_image!=0){
+            $image_validar = CUploadedFile::getInstances($contenido,'image');
             
-            $folder = Yii::getPathOfAlias('webroot').'/images/calendario/'.$id;
-            if (!file_exists($folder)) {
-                mkdir($folder);
+            foreach($image_validar as $image){
+                $contenido=new Contenido;
+                $contenido->image=$image;
+                $contenido->video=null;
+                $contenido->url='/images/calendario/'.$id;
+                $contenido->nombre=$image->getName();
+                $contenido->fk_tipo_contenido = 8;
+                $contenido->fk_calendario = $id;
+                $contenido->fk_estatus = 5;
+                $contenido->created_date = "now()";
+                $contenido->created_by = Yii::app()->user->id;
+                $contenido->version = "2";
+
+                $folder = Yii::getPathOfAlias('webroot').'/images/calendario/'.$id;
+                if (!file_exists($folder)) {
+                    mkdir($folder);
+                }
+
+
+                if($contenido->save()){
+                        if(!empty($image_validar)){
+                            $contenido->image->saveAs($folder .'/'. $image->getName());
+                            $images++;
+                        }
+                     }else{
+                        echo"<pre>Imagen";
+                        var_dump($contenido->Errors);
+                        exit;
+                    }     
             }
-            
-            
-            if($contenido->save()){
-                    if(!empty($image_validar)){
-                        $contenido->image->saveAs($folder .'/'. $image->getName());
-                        $images++;
-                    }
-                 }else{
-                    echo"<pre>Imagen";
-                    var_dump($contenido->Errors);
-                    exit;
-                }     
         }
 
-if(((count($_POST['Contenido']['image'])+count($_POST['Contenido']['video']))==($videos+$images))){
+if((($count_image+$count_video)==($videos+$images))){
 $this->redirect(array('view','id'=>$model->id_calendario));
 }
 }
@@ -268,6 +276,39 @@ $this->render('update_media',array(
 ));
 }
 
+public function actionPublicar($id) {
+        $model = $this->loadModel($id);
+        $publicar = new Publicaciones();
+        $image = VswCalendario::model()->findAllByAttributes(array('id_calendario' => $id, 'fk_tipo_contenido' => 8));
+        $video = VswCalendario::model()->findAllByAttributes(array('id_calendario' => $id, 'fk_tipo_contenido' => 9));
+
+if((isset($_POST['Publicaciones'])))
+{   
+    $publicar = new Publicaciones();
+    $publicar->fk_calendario = $id;
+    $publicar->publicacion = $_POST['Publicaciones']['publicacion'];
+    $publicar->mencionados = $_POST['Publicaciones']['mencionados'];
+    $publicar->fk_persona = Yii::app()->user->id;
+    $publicar->fk_estatus = 11;
+    $publicar->created_by = Yii::app()->user->id;
+    $publicar->created_date = "now()";
+    $publicar->modified_date = "now()";
+    if($publicar->save()){
+        $this->redirect(array('view','id'=>$model->id_calendario));
+    } else {
+        echo"<pre>Publicaciones";
+        var_dump($publicar->Errors);
+        exit;
+    }
+}
+
+$this->render('publicar',array(
+'model'=>$model,
+'publicar'=>$publicar,
+'image'=>$image,
+'video'=>$video,
+));
+}
 
 public function actionDownload($url, $name){
     $url = str_replace('-', '/', $url);

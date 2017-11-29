@@ -103,7 +103,6 @@ div#calendar .dates .row a {
     margin-top: 5px;
     line-height:80px;
     vertical-align:middle;
-    height:80px;
     font-size:25px;
     background-color: #DDD;
     color:#000;
@@ -125,6 +124,11 @@ div#calendar .dates .row .pointer:hover {
     color:#FFF;
 }
 
+div#calendar .dates .row .pointer:hover .calendar-activity, div#calendar .dates .row .pointer:hover .calendar-content, div#calendar .dates .row .pointer:hover .calendar-media {
+    border: solid 1px #FFF;
+    transition: ease all 800ms;
+}
+
 div#calendar .dates .row .pointer-now {
     cursor: pointer; 
     transition: ease all 500ms;
@@ -140,7 +144,10 @@ div#calendar .dates .row .pointer-now:hover {
     color:#FFF;
 }
 
-
+div#calendar .dates .row .pointer-now:hover .calendar-activity, div#calendar .dates .row .pointer-now:hover .calendar-content, div#calendar .dates .row .pointer-now:hover .calendar-media {
+    border: solid 1px #FFF;
+    transition: ease all 800ms;
+}
  
 :focus{
     outline:none;
@@ -148,4 +155,32 @@ div#calendar .dates .row .pointer-now:hover {
  
 div.clear{
     clear:both;
-}      
+}     
+
+.calendar-day-info {
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 5px;
+}
+
+.calendar-day-info .calendar-activity {
+    color: #FFF;
+    background-color: #0044cc;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+.calendar-day-info .calendar-content {
+    color: #FFF;
+    background-color: #fa1e2d;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+
+.calendar-day-info .calendar-media {
+    color: #FFF;
+    background-color: #FFD324;
+    font-size: 12px;
+    padding: 0 5px;
+}

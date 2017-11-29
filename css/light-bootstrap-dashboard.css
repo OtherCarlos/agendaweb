@@ -1064,6 +1064,14 @@ body > .navbar-collapse {
      transition: ease 700ms all;
 }
 
+.number {
+    font-size: 4em;
+    color: #fb404b;
+    font-weight: 700;
+    display: block;
+    margin-bottom: -10px;
+}
+
 .alert {
   border: 0;
   border-radius: 0;

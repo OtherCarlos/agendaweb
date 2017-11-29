@@ -4,13 +4,16 @@
         'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+<section>
+            <div class="row-create">
+                TÍTULO: <?php echo $model['titulo'] ?>
+            </div>
 
-<?php echo $form->errorSummary($model); ?>
+            <div style="text-align: justify; margin-top: 30px;"> 
+                <?php echo $model['resumen'] ?> 
+            </div>  
+        </section>
 
-	<?php echo $form->textFieldGroup($model,'titulo',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
-
-	<?php echo $form->textFieldGroup($model,'resumen',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>1000)))); ?>
 <div class="row media-content">
     <div class="col-md-6">
         <div class="row"><h1>Imágenes</h1></div>
@@ -34,13 +37,38 @@
     </div>
 </div>
 
-<div class="form-actions">
-	<?php $this->widget('booster.widgets.TbButton', array(
-			'buttonType'=>'submit', 
-			'context'=>'primary',
-                        'htmlOptions'=> array('onclick' => 'makeSubmit()'),
-			'label'=>$model->isNewRecord ? 'Guardar' : 'Guardar',
-		)); ?>
+<div class="row">
+<section class="col-md-12">
+    <div class="col-md-6" style="text-align: right">
+  
+            <?php
+            $this->widget('booster.widgets.TbButton', array(
+                'buttonType' => 'submit',
+                'htmlOptions' => array(
+                    'class' => 'boton_css',
+                    'style' => 'border: 2px solid #36302D;',
+                ),
+                'label' => $model->isNewRecord ? 'GUARDAR' : 'ACTUALIZAR',
+            ));
+            ?>
+     
+    </div>
+
+    <div class="col-md-6" style="text-align: left">
+        <?php
+        $this->widget('booster.widgets.TbButton', array(
+            'buttonType' => 'link',
+            'url' => Yii::app()->createUrl("/Calendario/index"),
+            'htmlOptions' => array(
+                'class' => 'boton_css',
+                'style' => 'border: 2px solid #36302D',
+            ),
+            'label' => 'REGRESAR',
+        ));
+        ?>
+    </div>
+
+</section>
 </div>
 
 <?php $this->endWidget(); ?>
