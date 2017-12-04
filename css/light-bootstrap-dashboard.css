@@ -175,6 +175,7 @@ input:focus {
   transition: all 100ms ease-in; }
 
 .button_file {
+    display: none;
     text-align: center;
     font-size: 1em;
     color: #FFF;

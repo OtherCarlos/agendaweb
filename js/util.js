@@ -26,7 +26,8 @@ $(document).ready(function(){
                 $('#UserProfile_direccion').attr('readonly', false);
                 $('#UserProfile_ciudad').attr('readonly', false);
                 $('#UserProfile_pais').attr('readonly', false);
-                $('#UserProfile_sobre_mi').attr('readonly', false);       
+                $('#UserProfile_sobre_mi').attr('readonly', false); 
+                $('#button_file').show();
                 $('#button_guardar').show();        
         });
         

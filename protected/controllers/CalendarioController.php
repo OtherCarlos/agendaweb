@@ -98,7 +98,7 @@ $model=new Calendario;
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
-if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
+if((isset($_POST['Contenido'])))
 {   
         
         $video_validar = CUploadedFile::getInstances($contenido,'video');
@@ -164,12 +164,8 @@ if((isset($_POST['Calendario']))&&(isset($_POST['Contenido'])))
                 }     
         }
 
-    
-//    die;
-$model->attributes=$_POST['Calendario'];
-if($model->save()){
-$this->redirect(array('view','id'=>$model->id_calendario));
-}
+    $this->redirect(array('view','id'=>$model->id_calendario));
+
 }
 
 $this->render('update',array(
