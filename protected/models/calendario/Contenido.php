@@ -16,6 +16,7 @@
  * @property integer $fk_estatus
  * @property boolean $es_activo
  * @property integer $version
+ * @property boolean $publicar
  *
  * The followings are the available model relations:
  * @property Calendario $fkCalendario
@@ -45,7 +46,7 @@ class Contenido extends CActiveRecord
 			array('fk_tipo_contenido, fk_calendario, created_date, created_by, fk_estatus, version', 'required'),
 			array('fk_tipo_contenido, fk_calendario, created_by, modified_by, fk_estatus, version', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>100),
-			array('url, modified_date, es_activo', 'safe'),
+			array('url, modified_date, es_activo, publicar', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_contenido, url, nombre, fk_tipo_contenido, fk_calendario, created_date, created_by, modified_date, modified_by, fk_estatus, es_activo, version', 'safe', 'on'=>'search'),
@@ -85,6 +86,7 @@ class Contenido extends CActiveRecord
 			'fk_estatus' => 'Fk Estatus',
 			'es_activo' => 'Es Activo',
 			'version' => 'Version',
+                        'publicar' => 'Publicar',
 		);
 	}
 
@@ -118,6 +120,7 @@ class Contenido extends CActiveRecord
 		$criteria->compare('fk_estatus',$this->fk_estatus);
 		$criteria->compare('es_activo',$this->es_activo);
 		$criteria->compare('version',$this->version);
+                $criteria->compare('publicar',$this->publicar);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

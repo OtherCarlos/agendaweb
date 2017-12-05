@@ -72,7 +72,7 @@ $this->widget('booster.widgets.TbGridView',array(
                 ),
                 array(
                 'class'=>'booster.widgets.TbButtonColumn',
-                'template'=>'{contenido}{multimedia}{publicar}{ver}{eliminar}',
+                'template'=>'{contenido}{multimedia}{publicar}{ver}{ver_publicar}{eliminar}',
                 'htmlOptions'=>array(
                     'style'=>'width: 150px; text-align:center; letter-spacing: 4px;', 
                 ),
@@ -104,6 +104,15 @@ $this->widget('booster.widgets.TbGridView',array(
                                     'icon' => 'eye-open',
                                     'size' => 'medium',
                                     'url' => 'Yii::app()->createUrl("Calendario/View", array("id" => $data->id_calendario))',
+                        ),
+                        'ver_publicar' => array
+                        (
+                                    'label' => 'Ver Publicación',
+                                    'icon' => 'eye-open',
+                                    'size' => 'medium',
+                                    'options'=>array('style'=>'color: red',),
+                                    'url' => 'Yii::app()->createUrl("Calendario/view_publicar", array("id" => $data->id_calendario))',
+                                    'visible'=>'(Yii::app()->user->checkAccess("publicador"))&&(Publicaciones::model()->searchByCalendarioId($data->id_calendario)<>0)',
                         ),
                         'eliminar' => array
                         (

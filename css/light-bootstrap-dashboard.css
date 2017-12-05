@@ -895,6 +895,22 @@ body > .navbar-collapse {
       background-color: #cc2127;
       transition: ease all 500ms;
   }
+  #calendario-update-form #image .selected span, #calendario-update-form #video .selected span  {
+      color: #FFF !important; 
+      transition: ease all 500ms;
+  }
+  #calendario-update-form #image .selected div, #calendario-update-form #video .selected div {
+      background-color: #cc2127 !important;
+      transition: ease all 500ms;
+  }
+  #calendario-update-form #image .selected div img {
+      opacity: .5 !important;
+      transition: ease all 500ms;
+  }
+  #calendario-update-form #video .selected div video {
+      opacity: .5 !important;
+      transition: ease all 500ms;
+  }
   #calendario-update-form #image #image_content div img {
       opacity: 1;
       transition: ease all 500ms;

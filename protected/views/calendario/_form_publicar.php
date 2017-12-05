@@ -1,7 +1,6 @@
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'calendario-update-form',
-	'enableAjaxValidation'=>false,
-        'htmlOptions' => array('enctype' => 'multipart/form-data'),
+	'enableAjaxValidation'=>false
 )); ?>
         
 
@@ -38,9 +37,9 @@
              $i = 0;
              foreach($image as $img) { 
              ?>
-            <div class="row" id="image_content">
-                <?php $url = str_replace('/', '-', $img->url); ?>
-                <a href="<?= $this->createUrl('/calendario/download/url/' . $url . '/name/' . $img->nombre); ?>"><span class="fa fa-save"></span>
+            <div class="row image_content_<?= $img->id_contenido ?> <?= ($img->publicar==TRUE)?'selected':'' ?>" id="image_content" onclick="selected('image', <?= $img->id_contenido ?>)">
+                <input type="checkbox" name="VswCalendario[imagenes][]" value="<?= $img->id_contenido ?>" <?= ($img->publicar==TRUE)?'checked':'' ?> hidden>
+                <a href="#"><span class="fa fa-check"></span>
                 <div class="col-md-12"><img src="<?= Yii::app()->baseUrl . $img->url . '/' . $img->nombre ?>" width="100%"/></div></a>  
             </div>
             <hr>
@@ -57,9 +56,9 @@
              $i = 0;
              foreach($video as $vid) { 
              ?>
-            <div class="row" id="video_content">
-                <?php $url = str_replace('/', '-', $vid->url); ?>
-                <a href="<?= $this->createUrl('/calendario/download/url/' . $url . '/name/' . $vid->nombre); ?>"<?= Yii::app()->baseUrl . $vid->url . $vid->nombre ?>><span class="fa fa-save"></span>
+            <div class="row video_content_<?= $vid->id_contenido ?> <?= ($vid->publicar==TRUE)?'selected':'' ?>" id="video_content" onclick="selected('video', <?= $img->id_contenido ?>)">
+                 <input type="checkbox" name="VswCalendario[videos][]" value="<?= $vid->id_contenido ?>" <?= ($vid->publicar==TRUE)?'checked':'' ?> hidden>
+                <a href="#"><span class="fa fa-check"></span>
                 <div class="col-md-12"><video width="100%" controls><source src="<?= Yii::app()->baseUrl . $vid->url . '/' . $vid->nombre ?>" type="video/mp4"></video></div></a>  
             </div>
             <hr>

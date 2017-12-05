@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index','view','create','update','update_media','download','admin','publicar'),
+'actions'=>array('index','view','view_publicar','create','update','update_media','download','admin','publicar'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -54,6 +54,19 @@ $contenido= Contenido::model()->findAllByAttributes(array('fk_calendario'=>$id,'
 $this->render('view',array(
 'view'=>$this->loadModel($id),
 'contenido'=>$contenido,
+));
+}
+
+public function actionView_publicar($id)
+{
+$image = Contenido::model()->findAllByAttributes(array('fk_calendario' => $id, 'fk_tipo_contenido' => 8, 'publicar' => TRUE));
+$video = Contenido::model()->findAllByAttributes(array('fk_calendario' => $id, 'fk_tipo_contenido' => 9, 'publicar' => TRUE));
+$publicacion= Publicaciones::model()->findByAttributes(array('fk_calendario'=>$id));
+$this->render('view_publicar',array(
+'view'=>$this->loadModel($id),
+'publicacion'=>$publicacion,
+'image'=>$image,
+'video'=>$video,
 ));
 }
 
@@ -278,8 +291,38 @@ public function actionPublicar($id) {
         $image = VswCalendario::model()->findAllByAttributes(array('id_calendario' => $id, 'fk_tipo_contenido' => 8));
         $video = VswCalendario::model()->findAllByAttributes(array('id_calendario' => $id, 'fk_tipo_contenido' => 9));
 
-if((isset($_POST['Publicaciones'])))
+if((isset($_POST['Publicaciones']))&&(isset($_POST['VswCalendario'])))
 {   
+    $imagenes = 0;
+    if(isset($_POST['VswCalendario']['imagenes'])){
+        foreach ($_POST['VswCalendario']['imagenes'] as $img){
+            $contenido = Contenido::model()->findByPk($img);
+            $contenido->publicar = TRUE;
+            if($contenido->save()){
+                $imagenes++;
+            } else {
+                echo"<pre>Contenido";
+                var_dump($contenido->Errors);
+                exit;
+            }
+        }
+    }
+    
+    $videos = 0;
+    if(isset($_POST['VswCalendario']['videos'])){
+        foreach ($_POST['VswCalendario']['videos'] as $vid){
+            $contenido = Contenido::model()->findByPk($vid);
+            $contenido->publicar = TRUE;
+            if($contenido->save()){
+                $videos++;
+            } else {
+                echo"<pre>Contenido";
+                var_dump($contenido->Errors);
+                exit;
+            }
+        }
+    }
+    
     $publicar = new Publicaciones();
     $publicar->fk_calendario = $id;
     $publicar->publicacion = $_POST['Publicaciones']['publicacion'];

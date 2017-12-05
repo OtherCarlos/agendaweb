@@ -113,6 +113,20 @@ class Publicaciones extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function searchByCalendarioId($id_calendario)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria = new CDbCriteria();
+                $criteria->select = '*';
+                $criteria->condition = 'fk_calendario = :fk_calendario';
+                $criteria->params = array('fk_calendario' => $id_calendario);
+                
+                return $count = Publicaciones::model()->count($criteria);
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

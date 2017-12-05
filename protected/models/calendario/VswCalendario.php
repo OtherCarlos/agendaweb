@@ -13,7 +13,9 @@
  * @property integer $fk_tipo_contenido
  * @property string $tipo_contenido
  * @property string $observacion
+ * @property integer $id_contenido
  * @property integer $version
+ * @property boolean $publicar
  */
 class VswCalendario extends CActiveRecord
 {
@@ -33,11 +35,11 @@ class VswCalendario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_calendario, fk_tipo_contenido, version', 'numerical', 'integerOnly'=>true),
+			array('id_calendario, fk_tipo_contenido, id_contenido, version', 'numerical', 'integerOnly'=>true),
 			array('titulo', 'length', 'max'=>50),
 			array('resumen, observacion', 'length', 'max'=>1000),
 			array('nombre, tipo_contenido', 'length', 'max'=>100),
-			array('fecha_calendario, url', 'safe'),
+			array('fecha_calendario, url, publicar', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_calendario, titulo, resumen, fecha_calendario, url, nombre, fk_tipo_contenido, tipo_contenido, observacion, version', 'safe', 'on'=>'search'),
@@ -70,7 +72,9 @@ class VswCalendario extends CActiveRecord
 			'fk_tipo_contenido' => 'Fk Tipo Contenido',
 			'tipo_contenido' => 'Tipo Contenido',
 			'observacion' => 'Observacion',
+                        'id_contenido' => 'Id Contenido',
 			'version' => 'Version',
+                        'publicar' => 'Publicar',
 		);
 	}
 
@@ -101,7 +105,9 @@ class VswCalendario extends CActiveRecord
 		$criteria->compare('fk_tipo_contenido',$this->fk_tipo_contenido);
 		$criteria->compare('tipo_contenido',$this->tipo_contenido,true);
 		$criteria->compare('observacion',$this->observacion,true);
+                $criteria->compare('id_contenido',$this->id_contenido);
 		$criteria->compare('version',$this->version);
+                $criteria->compare('publicar',$this->publicar);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

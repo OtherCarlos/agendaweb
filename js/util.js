@@ -3,7 +3,7 @@ var slashes = http.concat("//");
 var baseUrl = slashes.concat(window.location.hostname);
 
 $(document).ready(function(){
-	$('a[href^="#"]').on('click',function (e) {
+	$('a[href^="#login"]').on('click',function (e) {
 	    e.preventDefault();
 
 	    var target = this.hash;
@@ -122,6 +122,10 @@ $(document).ready(function(){
         $('#Publicaciones_publicacion').change(updateCountdown);
         $('#Publicaciones_publicacion').keyup(updateCountdown);
         
+        $("#image_content").click(function(){
+            
+        });
+        
 });
 
 function makeSubmit () {
@@ -138,6 +142,17 @@ function makeSubmit () {
      $("#ytContenido_image").attr("id", "ytContenido_image_" + count);
      
      $("#calendario-update-form").submit();
+}
+
+function selected(descrip, id) {
+    
+    if ($("." + descrip + "_content_" + id).hasClass("selected")) {
+        $("." + descrip + "_content_" + id).removeClass("selected");
+        $("." + descrip + "_content_" + id).find("input").removeAttr("checked");
+    } else {
+        $("." + descrip + "_content_" + id).find("input").attr("checked", "checked");
+        $("." + descrip + "_content_" + id).addClass("selected");
+    }
 }
 
 function updateCountdown() {
